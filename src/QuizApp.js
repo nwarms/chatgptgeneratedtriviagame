@@ -50,20 +50,23 @@ const QuizApp = ({ questions }) => {
       <ScoreSection score={score} questions={questions} />
       {showQuestions ? (
         <>
-          <QuestionSection
-            currentQuestion={currentQuestion}
-            questions={questions}
-          />
-          <AnswerSection
-            currentQuestion={currentQuestion}
-            questions={questions}
-            selectedAnswers={selectedAnswers}
-            handleAnswerOptionClick={handleAnswerOptionClick}
-          />
+        <QuestionSection
+          currentQuestion={currentQuestion}
+          questions={questions}
+          data-testid="question-section"
+        />
+        <AnswerSection
+          currentQuestion={currentQuestion}
+          questions={questions}
+          selectedAnswers={selectedAnswers}
+          handleAnswerOptionClick={handleAnswerOptionClick}
+          data-testid="answer-section"
+        />
           <FeedbackSection
             selectedAnswers={selectedAnswers}
             currentQuestion={currentQuestion}
             questions={questions}
+            data-testid="feedback-section"
           />
           <NavigationButtons
             currentQuestion={currentQuestion}
@@ -71,6 +74,7 @@ const QuizApp = ({ questions }) => {
             handlePrevQuestionClick={handlePrevQuestionClick}
             handleNextQuestionClick={handleNextQuestionClick}
             questions={questions}
+            data-testid="navigation-section"
           />
         </>
       ) : (
