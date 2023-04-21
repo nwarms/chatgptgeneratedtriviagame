@@ -1,35 +1,17 @@
-import QuizApp from "./QuizApp";
+import { useState } from "react";
 
-const questions = [
-  {
-    question: "Which planet is the closest to the Sun?",
-    choices: ["Earth", "Venus", "Mercury", "Mars"],
-    correctAnswer: "Mercury",
-  },
-  {
-    question: "What is the largest mammal in the world?",
-    choices: ["Elephant", "Blue Whale", "Giraffe", "Hippopotamus"],
-    correctAnswer: "Blue Whale",
-  },
-  {
-    question: "Which chemical element has the symbol 'O'?",
-    choices: ["Osmium", "Oxygen", "Oleum", "Oxide"],
-    correctAnswer: "Oxygen",
-  },
-  {
-    question: "In which year did the first man land on the moon?",
-    choices: ["1969", "1970", "1968", "1971"],
-    correctAnswer: "1969",
-  },
-  {
-    question: "What is the capital city of Spain?",
-    choices: ["Barcelona", "Madrid", "Valencia", "Seville"],
-    correctAnswer: "Madrid",
-  },
-];
+import QuizApp from "./QuizApp";
+import { questionSet1, questionSet2, questionSet3, questionSet4, questionSet5 } from "./QuestionSets";
 
 function App() {
-  return <QuizApp questions={questions} />;
+  const [selectedQuestionSet, setSelectedQuestionSet] = useState(questionSet1);
+  const switchQuestionSet = () => {
+    const questionSets = [questionSet1, questionSet2, questionSet3, questionSet4, questionSet5];
+    const randomIndex = Math.floor(Math.random() * questionSets.length);
+    setSelectedQuestionSet(questionSets[randomIndex]);
+  };
+
+  return <QuizApp questions={selectedQuestionSet} switchQuestionSet={switchQuestionSet} />
 }
 
 export default App;

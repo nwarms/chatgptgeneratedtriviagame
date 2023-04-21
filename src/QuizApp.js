@@ -7,7 +7,7 @@ import NavigationButtons from "./components/NavigationButtons";
 import ScoreSection from "./components/ScoreSection";
 import "./QuizApp.css"; // Import the CSS file
 
-const QuizApp = ({ questions }) => {
+const QuizApp = ({ questions, switchQuestionSet }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [score, setScore] = useState(0);
   const [showQuestions, setShowQuestions] = useState(true);
@@ -43,7 +43,9 @@ const QuizApp = ({ questions }) => {
     setScore(0);
     setShowQuestions(true);
     setSelectedAnswers({});
+    switchQuestionSet();
   };
+  
 
   return (
     <div className="quiz-app">
